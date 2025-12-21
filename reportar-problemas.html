@@ -9,6 +9,14 @@ permalink: /pt-BR/reportar-problemas/
 <div class="min-h-screen bg-gray-50 py-12">
     <div class="container mx-auto px-4">
         <div class="max-w-2xl mx-auto">
+            <!-- Context Banner (shown when coming from a specific page) -->
+            <div id="context-banner" class="hidden mb-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                <p class="text-sm text-blue-800">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Reportando problema em: <strong id="context-page"></strong>
+                </p>
+            </div>
+
             <div class="text-center mb-8">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-bug text-orange-600 text-2xl"></i>
@@ -21,7 +29,7 @@ permalink: /pt-BR/reportar-problemas/
                 <form action="#" method="POST" class="space-y-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Problema</label>
-                        <select
+                        <select id="problem-type"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option>Link quebrado</option>
                             <option>Informação imprecisa</option>
@@ -32,18 +40,23 @@ permalink: /pt-BR/reportar-problemas/
                         </select>
                     </div>
                     <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Página Afetada</label>
+                        <input type="text" id="page-name" placeholder="Nome ou título da página"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">URL da Página</label>
-                        <input type="url" placeholder="https://ipl.better-web.org/..."
+                        <input type="url" id="page-url" placeholder="https://ipl.better-web.org/..."
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
-                        <textarea rows="4" placeholder="Descreva o problema em detalhes..."
+                        <textarea id="description" rows="4" placeholder="Descreva o problema em detalhes..."
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Seu E-mail (opcional)</label>
-                        <input type="email" placeholder="Para perguntas de acompanhamento"
+                        <input type="email" id="email" placeholder="Para perguntas de acompanhamento"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <button type="submit"
@@ -61,3 +74,27 @@ permalink: /pt-BR/reportar-problemas/
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page');
+        const url = urlParams.get('url');
+
+        const pageNameInput = document.getElementById('page-name');
+        const pageUrlInput = document.getElementById('page-url');
+        const contextBanner = document.getElementById('context-banner');
+        const contextPage = document.getElementById('context-page');
+
+        if (page) {
+            pageNameInput.value = decodeURIComponent(page);
+            contextPage.textContent = decodeURIComponent(page);
+            contextBanner.classList.remove('hidden');
+        }
+
+        if (url) {
+            const fullUrl = window.location.origin + decodeURIComponent(url);
+            pageUrlInput.value = fullUrl;
+        }
+    });
+</script>

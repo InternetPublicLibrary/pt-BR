@@ -3,7 +3,7 @@ layout: categories
 title: Todas as Categorias
 lang: pt-BR
 description: Navegue por todas as categorias e tópicos disponíveis na Internet Public Library. Encontre recursos selecionados organizados por área de conhecimento.
-permalink: /pt-BR/categories/
+permalink: /pt-BR/categorias/
 ---
 
 Bem-vindo ao nosso diretório completo de categorias. Aqui você encontrará todos os principais tópicos cobertos na Internet Public Library, desde Ciência da Computação e Matemática até Artes e Humanidades.

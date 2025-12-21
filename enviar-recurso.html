@@ -1,0 +1,109 @@
+---
+layout: default
+title: Enviar Recurso
+lang: pt-BR
+description: Envie um novo recurso educacional para a Internet Public Library. Ajude a expandir nossa coleção de
+materiais de aprendizagem selecionados.
+permalink: /pt-BR/enviar-recurso/
+---
+
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <div class="p-3 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-slate-900">Enviar Recurso</h1>
+            <p class="mt-2 text-slate-600">Compartilhe um recurso educacional com a comunidade</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="url" class="block text-sm font-medium text-slate-700 mb-2">URL do Recurso *</label>
+                    <input id="url" name="url" type="url" required
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
+                        placeholder="https://exemplo.com/recurso">
+                </div>
+
+                <div>
+                    <label for="title" class="block text-sm font-medium text-slate-700 mb-2">Título do Recurso *</label>
+                    <input id="title" name="title" type="text" required
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
+                        placeholder="ex: Introdução ao Aprendizado de Máquina">
+                </div>
+
+                <div>
+                    <label for="description" class="block text-sm font-medium text-slate-700 mb-2">Descrição *</label>
+                    <textarea id="description" name="description" rows="4" required
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
+                        placeholder="Descreva o que este recurso oferece e quem se beneficiaria dele..."></textarea>
+                </div>
+
+                <div>
+                    <label for="category" class="block text-sm font-medium text-slate-700 mb-2">Categoria *</label>
+                    <select id="category" name="category" required
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="computacao">Computação</option>
+                        <option value="academicos">Acadêmicos</option>
+                        <option value="negocios">Negócios</option>
+                        <option value="design">Design</option>
+                        <option value="desenvolvimento">Desenvolvimento</option>
+                        <option value="estilo-de-vida">Estilo de Vida</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="type" class="block text-sm font-medium text-slate-700 mb-2">Tipo de Recurso</label>
+                    <select id="type" name="type"
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200">
+                        <option value="website">Website</option>
+                        <option value="curso">Curso</option>
+                        <option value="tutorial">Tutorial</option>
+                        <option value="documentacao">Documentação</option>
+                        <option value="livro">Livro</option>
+                        <option value="video">Vídeo</option>
+                        <option value="ferramenta">Ferramenta</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="tags" class="block text-sm font-medium text-slate-700 mb-2">Tags</label>
+                    <input id="tags" name="tags" type="text"
+                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
+                        placeholder="ex: python, aprendizado-de-maquina, iniciante">
+                    <p class="mt-1 text-xs text-slate-500">Separe as tags com vírgulas</p>
+                </div>
+
+                <div class="flex items-start">
+                    <input id="free" name="free" type="checkbox" checked
+                        class="h-4 w-4 mt-1 text-green-600 focus:ring-green-500 border-slate-300 rounded">
+                    <label for="free" class="ml-2 block text-sm text-slate-700">Este recurso é gratuito</label>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-sm text-slate-600">
+                        <strong>Nota:</strong> Todas as submissões são revisadas antes de serem publicadas. Priorizamos
+                        recursos de alta qualidade e educacionais que são ativamente mantidos.
+                    </p>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-3 px-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                    Enviar Recurso
+                </button>
+            </form>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="/pt-BR/contribute/" class="text-blue-600 hover:text-blue-500 font-medium">← Voltar para
+                Contribuir</a>
+        </div>
+    </div>
+</div>

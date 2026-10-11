@@ -23,31 +23,31 @@ permalink: /pt-BR/enviar-recurso/
         </div>
 
         <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
-            <form action="#" method="POST" class="space-y-6">
+            <form action="https://github.com/InternetPublicLibrary/pt-BR/issues/new" method="get" data-ipl-issue-form data-title-prefix="Sugestão de recurso: " class="space-y-6">
                 <div>
                     <label for="url" class="block text-sm font-medium text-slate-700 mb-2">URL do Recurso *</label>
-                    <input id="url" name="url" type="url" required
+                    <input id="url" data-issue-field="URL do Recurso" type="url" required
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
                         placeholder="https://exemplo.com/recurso">
                 </div>
 
                 <div>
                     <label for="title" class="block text-sm font-medium text-slate-700 mb-2">Título do Recurso *</label>
-                    <input id="title" name="title" type="text" required
+                    <input id="title" data-issue-field="Título do Recurso" data-issue-title type="text" required
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
                         placeholder="ex: Introdução ao Aprendizado de Máquina">
                 </div>
 
                 <div>
                     <label for="description" class="block text-sm font-medium text-slate-700 mb-2">Descrição *</label>
-                    <textarea id="description" name="description" rows="4" required
+                    <textarea id="description" data-issue-field="Descrição" rows="4" required
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
                         placeholder="Descreva o que este recurso oferece e quem se beneficiaria dele..."></textarea>
                 </div>
 
                 <div>
                     <label for="category" class="block text-sm font-medium text-slate-700 mb-2">Categoria *</label>
-                    <select id="category" name="category" required
+                    <select id="category" data-issue-field="Categoria" required
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200">
                         <option value="">Selecione uma categoria</option>
                         <option value="computacao">Computação</option>
@@ -61,7 +61,7 @@ permalink: /pt-BR/enviar-recurso/
 
                 <div>
                     <label for="type" class="block text-sm font-medium text-slate-700 mb-2">Tipo de Recurso</label>
-                    <select id="type" name="type"
+                    <select id="type" data-issue-field="Tipo de Recurso"
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200">
                         <option value="website">Website</option>
                         <option value="curso">Curso</option>
@@ -75,14 +75,14 @@ permalink: /pt-BR/enviar-recurso/
 
                 <div>
                     <label for="tags" class="block text-sm font-medium text-slate-700 mb-2">Tags</label>
-                    <input id="tags" name="tags" type="text"
+                    <input id="tags" data-issue-field="Tags" type="text"
                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
                         placeholder="ex: python, aprendizado-de-maquina, iniciante">
                     <p class="mt-1 text-xs text-slate-500">Separe as tags com vírgulas</p>
                 </div>
 
                 <div class="flex items-start">
-                    <input id="free" name="free" type="checkbox" checked
+                    <input id="free" data-issue-field="Este recurso é gratuito" type="checkbox" checked
                         class="h-4 w-4 mt-1 text-green-600 focus:ring-green-500 border-slate-300 rounded">
                     <label for="free" class="ml-2 block text-sm text-slate-700">Este recurso é gratuito</label>
                 </div>
@@ -94,10 +94,12 @@ permalink: /pt-BR/enviar-recurso/
                     </p>
                 </div>
 
-                <button type="submit"
+                <input type="hidden" name="title"><input type="hidden" name="body">
+                    <p class="text-sm text-gray-600">Os envios viram issues públicas no GitHub (é preciso ter conta). Não inclua dados pessoais.</p>
+                    <button type="submit"
                     class="w-full py-3 px-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
-                    Enviar Recurso
-                </button>
+                        Abrir sugestão no GitHub
+                    </button>
             </form>
         </div>
 

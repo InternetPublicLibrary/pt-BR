@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: info
 title: Reportar Problemas
 lang: pt-BR
 description: Reporte links quebrados, informações imprecisas ou outros problemas com recursos da IPL.
@@ -26,10 +26,10 @@ permalink: /pt-BR/reportar-problemas/
             </div>
 
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-                <form action="#" method="POST" class="space-y-6">
+                <form action="https://github.com/InternetPublicLibrary/pt-BR/issues/new" method="get" class="space-y-6" data-ipl-report>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Problema</label>
-                        <select id="problem-type"
+                        <label for="report-type" class="block text-sm font-medium text-gray-700 mb-2">Tipo de Problema</label>
+                        <select id="report-type"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option>Link quebrado</option>
                             <option>Informação imprecisa</option>
@@ -40,30 +40,38 @@ permalink: /pt-BR/reportar-problemas/
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Página Afetada</label>
-                        <input type="text" id="page-name" placeholder="Nome ou título da página"
+                        <label for="report-url" class="block text-sm font-medium text-gray-700 mb-2">URL da Página</label>
+                        <input type="url" id="report-url" placeholder="https://ipl.better-web.org/..."
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">URL da Página</label>
-                        <input type="url" id="page-url" placeholder="https://ipl.better-web.org/..."
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
-                        <textarea id="description" rows="4" placeholder="Descreva o problema em detalhes..."
+                        <label for="report-description" class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
+                        <textarea id="report-description" rows="4" required placeholder="Descreva o problema em detalhes..."
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Seu E-mail (opcional)</label>
-                        <input type="email" id="email" placeholder="Para perguntas de acompanhamento"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
+                    <input type="hidden" name="title"><input type="hidden" name="body">
+                    <p class="text-sm text-gray-600">Os relatos são issues públicas no GitHub. É preciso ter uma conta no GitHub; não inclua dados pessoais.</p>
                     <button type="submit"
                         class="w-full py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors">
-                        Enviar Relatório
+                        Abrir o relato no GitHub
                     </button>
                 </form>
+                <script>
+                  // GitHub's new-issue page reads title/body from the URL: compose them from the fields.
+                  (function () {
+                    var form = document.querySelector('[data-ipl-report]');
+                    if (!form) return;
+                    var params = new URLSearchParams(location.search);
+                    var urlField = document.getElementById('report-url');
+                    if (params.get('url')) urlField.value = new URL(params.get('url'), location.origin).href;
+                    form.addEventListener('submit', function () {
+                      var type = document.getElementById('report-type').value;
+                      var page = urlField.value.trim();
+                      form.elements.title.value = type + (page ? ': ' + page : '');
+                      form.elements.body.value = (page ? page + '\n\n' : '') + document.getElementById('report-description').value.trim();
+                    });
+                  })();
+                </script>
             </div>
 
             <div class="mt-6 text-center">
